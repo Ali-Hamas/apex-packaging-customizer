@@ -1,11 +1,23 @@
 {
-  "name": "apex-packaging-demo-ui",
-  "version": "1.0.0",
-  "description": "Premium Custom Packaging B2B Demo Website UI Clone",
-  "main": "index.html",
+  "name": "tmp-react",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "npx -y browser-sync start --server --files \"*.html, *.css, *.js\""
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "oxlint",
+    "preview": "vite preview"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "oxlint": "^1.71.0",
+    "vite": "^8.1.1"
+  }
 }
