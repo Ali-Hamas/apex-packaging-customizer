@@ -1,0 +1,11 @@
+{
+  "name": "apex-packaging-demo-ui",
+  "version": "1.0.0",
+  "description": "Premium Custom Packaging B2B Demo Website UI Clone",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y browser-sync start --server --files \"*.html, *.css, *.js\""
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

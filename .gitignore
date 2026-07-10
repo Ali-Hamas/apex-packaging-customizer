@@ -1,0 +1,18 @@
+# Node modules
+node_modules/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Vercel configuration
+.vercel/
+
+# Editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
