@@ -2445,4 +2445,24 @@ textarea.form-input {
     .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
     .footer-legal-links { justify-content: center; }
     .preset-swatches { grid-template-columns: repeat(2, 1fr); }
+    
+    /* Config display box layout adaptation for narrow viewports */
+    .config-display { padding: 24px 16px; }
+    .box-3d-scene { transform: scale(0.9); margin: 20px 0; }
+    
+    /* Avoid testimonial text overflow and vertical clipping */
+    .testimonial-slider { height: 420px; }
+    .testimonial-slide { padding: 24px; }
+}
+
+@media (max-width: 400px) {
+    .chat-widget {
+        right: 16px;
+        bottom: 16px;
+    }
+    .chat-window {
+        width: calc(100vw - 32px);
+        right: 0;
+        bottom: 76px;
+    }
 }
