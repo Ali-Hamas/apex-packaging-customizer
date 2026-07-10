@@ -532,8 +532,8 @@ img {
 .mobile-nav-drawer {
     position: fixed;
     top: 0;
-    right: -320px;
-    width: 320px;
+    right: calc(-1 * min(320px, 100vw));
+    width: min(320px, 100vw);
     height: 100vh;
     background: var(--card-bg-light);
     box-shadow: var(--shadow-xl);
@@ -2411,6 +2411,7 @@ textarea.form-input {
     .hero-desc { margin-inline: auto; }
     .hero-buttons { justify-content: center; }
     .hero-badges { max-width: 600px; margin-inline: auto; }
+    .hero-circle-bg { width: 320px; height: 320px; } /* Prevent large absolute glow from pushing boundaries */
     .configurator-grid { grid-template-columns: 1fr; }
     .config-form { border-right: none; border-bottom: 1px solid var(--border-color); padding: 32px; }
     .config-display { padding: 32px; }
@@ -2432,6 +2433,7 @@ textarea.form-input {
     .hero-buttons { flex-direction: column; width: 100%; }
     .hero-buttons .btn { width: 100%; }
     .hero-badges { grid-template-columns: 1fr; }
+    .hero-circle-bg { display: none; } /* Hide absolute circle glow on small devices to prevent overflow completely */
     .style-options { grid-template-columns: 1fr; }
     .option-selects { grid-template-columns: 1fr; }
     .config-actions { grid-template-columns: 1fr; }
