@@ -49,6 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
     closeMobileNav.addEventListener('click', toggleMobileNav);
     mobileOverlay.addEventListener('click', toggleMobileNav);
 
+    // Auto-close mobile drawer when any anchor link inside is clicked
+    const mobileDrawerLinks = document.querySelectorAll('.mobile-nav-drawer a');
+    mobileDrawerLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            document.body.classList.remove('mobile-nav-active');
+        });
+    });
+
     // ----------------------------------------------------
     // Sticky Header Scroll Effect
     // ----------------------------------------------------

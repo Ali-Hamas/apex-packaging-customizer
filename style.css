@@ -74,9 +74,13 @@
     box-sizing: border-box;
 }
 
-html {
+html, body {
     scroll-behavior: smooth;
     font-size: 16px;
+    overflow-x: hidden; /* Prevent horizontal page scrolling on all browsers */
+    max-width: 100%;
+    width: 100%;
+    position: relative;
 }
 
 body {
@@ -84,8 +88,19 @@ body {
     background-color: var(--primary-light);
     color: var(--text-primary);
     line-height: 1.6;
-    overflow-x: hidden;
     transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Lock body scrolling when mobile drawer navigation is active */
+.mobile-nav-active, 
+.mobile-nav-active body {
+    overflow: hidden !important;
+    height: 100vh !important;
+}
+
+/* Utility to hide desktop-only items */
+.displaynone {
+    display: inline-flex !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -532,6 +547,7 @@ img {
 .mobile-nav-drawer {
     position: fixed;
     top: 0;
+    left: auto; /* Critical fix: prevent browser-default left positioning from stretching the drawer across the viewport */
     right: calc(-1 * min(320px, 100vw));
     width: min(320px, 100vw);
     height: 100vh;
@@ -703,7 +719,8 @@ img {
 /* Trust Logos */
 .trust-bar {
     background: var(--card-bg-light);
-    border-y: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
     padding: 30px 0;
     box-shadow: var(--shadow-sm);
 }
@@ -728,7 +745,9 @@ img {
 .logo-grid {
     display: flex;
     align-items: center;
-    gap: 48px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px 48px; /* Allow wrapping with a 24px vertical row gap and 48px column gap */
     filter: grayscale(1) opacity(0.5);
     transition: filter var(--transition-normal);
 }
@@ -2426,6 +2445,29 @@ textarea.form-input {
     .quote-form-card { padding: 32px; }
     .footer-top { grid-template-columns: repeat(2, 1fr); }
     .footer-brand { grid-column: span 2; }
+    
+    /* Hide desktop-specific top bar text and call links */
+    .displaynone {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Collapse top bar content to stack and center */
+    .top-bar-content {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+    .top-bar-info {
+        flex-direction: column;
+        gap: 6px;
+        align-items: center;
+    }
+    .top-bar-links {
+        justify-content: center;
+        width: 100%;
+    }
 }
 
 @media (max-width: 576px) {
@@ -2450,7 +2492,14 @@ textarea.form-input {
     
     /* Config display box layout adaptation for narrow viewports */
     .config-display { padding: 24px 16px; }
-    .box-3d-scene { transform: scale(0.9); margin: 20px 0; }
+    .box-3d-scene { transform: scale(0.85); margin: 20px 0; }
+    
+    /* Shrink navigation container and logo to prevent mobile header overlap */
+    .nav-container { height: 60px; }
+    .logo-text { font-size: 1.25rem; gap: 6px; }
+    .logo-icon { width: 22px; height: 22px; }
+    .nav-container .btn { padding: 8px 16px; font-size: 0.8rem; }
+    .hamburger { width: 22px; height: 16px; }
     
     /* Avoid testimonial text overflow and vertical clipping */
     .testimonial-slider { height: 420px; }
